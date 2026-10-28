@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pham Nhat Tien — Software Engineer</title>
+<meta name="description" content="Software engineer building platforms, AI agent systems and product UI: Magisk visual builder, FIDT IAM, Studio multi-agent framework, One Pane.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: one dark "spec sheet" column; hero, proof strip, services, experience case files, GitHub grid, contact */
+  :root {
+    --bg:#081118; --panel:#0d1b25; --panel-2:#102735; --ink:#e9f4f8; --muted:#a3bdc7; --line:#254354;
+    --cyan:#7fe3ff; --amber:#ffd166;
+    --head:"Lexend", system-ui, sans-serif; --body:"Inter", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+    color-scheme:dark;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:radial-gradient(circle at top right,#123044 0,var(--bg) 42%) fixed, var(--bg); color:var(--ink);
+         font:16px/1.65 var(--body); padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+  a { color:var(--cyan); text-underline-offset:3px; }
+  a:focus-visible { outline:2px solid var(--cyan); outline-offset:2px; }
+  .sheet { max-width:1080px; margin:32px auto; padding:20px clamp(18px,5vw,64px) 56px; border:1px solid var(--line); background:rgba(8,17,24,.9); box-shadow:0 20px 80px #0008; }
+  .meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 16px; padding-bottom:16px; border-bottom:1px solid var(--line); color:var(--muted); font:11px var(--mono); letter-spacing:.08em; }
+  .status { color:var(--amber); }
+  nav { display:flex; flex-wrap:wrap; gap:6px 16px; }
+  nav a { color:var(--muted); text-decoration:none; }
+  nav a:hover { color:var(--cyan); }
+
+  header { padding:64px 0 40px; border-bottom:1px solid var(--line); }
+  .eyebrow, h2 { font:12px var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--cyan); }
+  h1 { margin:10px 0 8px; font:700 clamp(40px,7vw,76px)/1.02 var(--head); letter-spacing:-.04em; text-wrap:balance; }
+  .role { margin:0; color:var(--amber); font:clamp(14px,2vw,18px) var(--mono); }
+  .intro { max-width:720px; margin:24px 0 0; color:var(--muted); font-size:18px; }
+  .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+  .btn { display:inline-flex; align-items:center; padding:10px 16px; border:1px solid var(--line); color:var(--ink); text-decoration:none; font:13px var(--mono); background:var(--panel); }
+  .btn.primary { border-color:var(--cyan); color:#04131b; background:var(--cyan); font-weight:500; }
+  .btn:hover { border-color:var(--cyan); }
+  .contacts { display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:20px; font:13px var(--mono); color:var(--muted); }
+  .contacts a { color:var(--muted); text-decoration:none; }
+  .contacts a:hover { color:var(--cyan); }
+
+  .proof { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); border-bottom:1px solid var(--line); }
+  .proof div { padding:22px 18px 22px 0; }
+  .proof b { display:block; font:600 30px/1.1 var(--head); font-variant-numeric:tabular-nums; }
+  .proof span { color:var(--muted); font-size:13px; }
+
+  section { padding:44px 0; border-bottom:1px solid var(--line); }
+  h2 { margin:0 0 20px; }
+  h3 { margin:0; font:600 20px/1.3 var(--head); text-wrap:balance; }
+  p { margin:6px 0; }
+  .muted { color:var(--muted); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; }
+  .card { padding:22px; background:linear-gradient(135deg,var(--panel-2),var(--panel)); border:1px solid var(--line); min-width:0; display:flex; flex-direction:column; gap:8px; }
+  .card p, li { color:var(--muted); }
+  .card .foot { margin-top:auto; padding-top:8px; font:12px var(--mono); overflow-wrap:anywhere; }
+  .tags { display:flex; flex-wrap:wrap; gap:6px; }
+  .tag { padding:2px 8px; border:1px solid var(--line); color:var(--cyan); font:11px var(--mono); }
+
+  .role-block + .role-block { margin-top:36px; }
+  .role-head { display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 16px; align-items:baseline; padding-bottom:10px; border-bottom:1px dashed var(--line); }
+  .role-head h3 { font-size:22px; }
+  .when { font:12px var(--mono); color:var(--amber); white-space:nowrap; }
+  .case { display:grid; grid-template-columns:220px 1fr; gap:8px 28px; padding:22px 0; border-bottom:1px dashed var(--line); }
+  .case:last-child { border-bottom:0; }
+  .case > * { min-width:0; }
+  .side { display:flex; flex-direction:column; gap:6px; }
+  .case h4 { margin:0; font:600 18px/1.3 var(--head); }
+  .case ul { margin:0; padding-left:18px; }
+  .case li { margin:4px 0; }
+  .case li b { color:var(--ink); font-weight:600; }
+
+  .oss { grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  .oss .big { grid-column:span 2; }
+  .kicker { font:11px var(--mono); letter-spacing:.1em; text-transform:uppercase; color:var(--amber); }
+  code { font:13px var(--mono); }
+
+  .steps { counter-reset:step; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+  .steps .card { counter-increment:step; }
+  .steps h3::before { content:counter(step,decimal-leading-zero) "  "; color:var(--cyan); font:500 13px var(--mono); }
+
+  .stack { display:grid; grid-template-columns:140px 1fr; gap:6px 16px; }
+  .stack b { font:500 13px var(--mono); color:var(--cyan); }
+  .stack span { color:var(--muted); min-width:0; }
+
+  footer { padding-top:28px; color:var(--muted); font-size:13px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; }
+  @media (max-width:760px) {
+    .sheet { margin:0 -16px; border-width:0; }
+    .case { grid-template-columns:1fr; }
+    .oss .big { grid-column:auto; }
+    .stack { grid-template-columns:1fr; gap:0; }
+    .stack span { margin-bottom:8px; }
+    header { padding-top:40px; }
+  }
+  @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<div class="meta">
+  <span>PROFILE / PNT-01 · <span class="status">OPEN TO NEW ROLES &amp; UI/UX PROJECTS</span></span>
+  <nav aria-label="Sections">
+    <a href="#services">Services</a><a href="#experience">Experience</a><a href="#github">GitHub</a><a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<header>
+  <div class="eyebrow">Software engineer · Ho Chi Minh City</div>
+  <h1>Pham Nhat Tien</h1>
+  <p class="role">Platforms · AI agent systems · Product UI</p>
+  <p class="intro">I design and build the systems other teams build on: a Figma-like visual page builder with real-time collaboration
+    and an AI agent, an identity platform, an API gateway and a financial-modelling language. I work AI-first, with traces, goals
+    and benchmarks instead of guesswork, and I care about how the result looks and feels as much as how it runs.</p>
+  <div class="cta">
+    <a class="btn primary" href="Pham-Nhat-Tien-CV.pdf">Download CV (PDF)</a>
+    <a class="btn" href="#contact">Start a project</a>
+  </div>
+  <div class="contacts">
+    <span>+84 707 710 344</span>
+    <a href="mailto:tienphamnhat.personal@gmail.com">tienphamnhat.personal@gmail.com</a>
+    <a href="https://github.com/samsa0201">github.com/samsa0201</a>
+    <a href="https://www.linkedin.com/in/iwkuthedev/">linkedin.com/in/iwkuthedev</a>
+  </div>
+</header>
+
+<div class="proof" aria-label="Highlights">
+  <div><b>3.5 yrs</b><span>at FIDT, delivery then R&amp;D</span></div>
+  <div><b>−61%</b><span>agent turns per build after TGB (140 → 55)</span></div>
+  <div><b>~9 s</b><span>save-to-live after the SSR publishing rewrite</span></div>
+  <div><b>6 agents</b><span>in parallel on a production feature with Studio</span></div>
+</div>
+
+<section id="services">
+  <h2>What I can help with</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Product UI &amp; UX</h3>
+      <p>Interfaces designed and shipped by the same person: flows, visual design, motion, and a frontend that matches the mockup. Web or mobile.</p>
+      <div class="tags"><span class="tag">UI design</span><span class="tag">Design systems</span><span class="tag">Vue</span><span class="tag">Flutter</span></div>
+    </div>
+    <div class="card">
+      <h3>Platform &amp; system design</h3>
+      <p>Gateways, identity, real-time sync and rendering pipelines. Written design records, rejected options on paper, rollout behind flags.</p>
+      <div class="tags"><span class="tag">OIDC</span><span class="tag">SSR</span><span class="tag">Sync</span><span class="tag">Node.js</span></div>
+    </div>
+    <div class="card">
+      <h3>AI agents that hold up</h3>
+      <p>Agent architecture, tool use, multi-agent orchestration and evaluation: benchmarks and quality gates so improvements are measured, not assumed.</p>
+      <div class="tags"><span class="tag">Agents</span><span class="tag">Evaluation</span><span class="tag">MCP</span><span class="tag">Sandboxing</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience · FIDT</h2>
+
+  <div class="role-block">
+    <div class="role-head"><h3>Software Engineer — R&amp;D Team</h3><span class="when">2024 – PRESENT</span></div>
+
+    <div class="case">
+      <div class="side"><h4>Magisk</h4><span class="muted">Figma-like visual page builder, low-code, in production</span><span class="when">2025 – present</span></div>
+      <ul>
+        <li><b>Real-time collaboration.</b> Wrote the design record for multi-user editing and version history on top of the existing editor: shadow-state diffing (0.03 ms per edit), per-field last-writer-wins, write-ahead journal and a kill switch. CRDTs and page locking were evaluated and rejected.</li>
+        <li><b>Publishing pipeline.</b> Moved published pages from browser rendering to server-side rendering in phases, behind a flag and checked by screenshot-parity tests, with per-route cache, versioned invalidation and sandboxed page logic. Save-to-live is now about 9 seconds.</li>
+        <li><b>AI agent.</b> Turns user requests, from text prompts to Figma designs, into editable pages, kept reliable with tool-call validation, repeated-call detection, a contrast gate and a screenshot evaluator loop.</li>
+        <li><b>Agent evaluation (TGB).</b> Designed Trace → Goal → Bench: trajectory traces, explicit goals, automated benchmarks and code-based judges with hard quality gates that catch reward hacking. Cut tool-call turns per build by 61%.</li>
+      </ul>
+    </div>
+
+    <div class="case">
+      <div class="side"><h4>FIDT IAM</h4><span class="muted">Identity &amp; access management</span><span class="when">2024 – 2025</span></div>
+      <ul>
+        <li>Built the company's OpenID Connect provider with Azure AD SSO, using Directus as the identity broker for users and roles.</li>
+        <li>Client credentials, device flow, token revocation and logout, JWKS key rotation, and token invalidation when roles change.</li>
+      </ul>
+    </div>
+
+    <div class="case">
+      <div class="side"><h4>FML</h4><span class="muted">Financial-modelling DSL &amp; calculation engine</span><span class="when">2024</span></div>
+      <ul>
+        <li>Grammar in Ohm-js, a parser producing an AST and an interpreter with conditionals, case statements and built-in financial functions.</li>
+        <li>Multi-period engine that derives net assets, income, cash flow and cash monthly and rolls them up to quarters and years; covered by unit tests.</li>
+      </ul>
+    </div>
+
+    <div class="case">
+      <div class="side"><h4>FIDT MVVM</h4><span class="muted">Frontend architecture framework, co-designed with the CTO</span><span class="when">2025 – present</span></div>
+      <ul>
+        <li>Traditional MVVM adapted to Vue: views only bind, ViewModels hold state and business logic, EventStores own watchers and lifecycle.</li>
+        <li>The standard architecture for every FIDT frontend, written up as conventions and agent skills so people and AI agents write the same shape of code.</li>
+        <li>Ran workshops and hands-on sessions to train the frontend team, and supported migrations through code review.</li>
+      </ul>
+    </div>
+
+    <div class="case">
+      <div class="side"><h4>Resource Guru → Saul</h4><span class="muted">Authorization service that grew into an API gateway (v1)</span><span class="when">2024 – 2025</span></div>
+      <ul>
+        <li>Built Resource Guru, the permission service for the FIDT app, then grew its model into Saul, a gateway for all services.</li>
+        <li>One YAML definition per service generates types, validation, client SDKs and permissions, enforced at the gateway.</li>
+      </ul>
+    </div>
+
+    <div class="case">
+      <div class="side"><h4>FIDT UI Components</h4><span class="muted">Shared component library &amp; design tokens</span><span class="when">2025 – 2026</span></div>
+      <ul>
+        <li>Vue component library used across product teams, and a pipeline from Figma tokens to versioned npm packages with a type-safe theme.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="role-block">
+    <div class="role-head"><h3>Software Engineer — Delivery Team</h3><span class="when">04/2023 – 2024</span></div>
+    <div class="case">
+      <div class="side"><h4>Frontend Principal Engineer</h4></div>
+      <ul><li>Owned frontend architecture and conventions across delivery projects, including code review and onboarding.</li></ul>
+    </div>
+    <div class="case">
+      <div class="side"><h4>Sales &amp; Wealth platforms</h4></div>
+      <ul><li>First codebase and architecture for both platforms: authentication and permissions, environment configuration, dev environments and the checkout and payment flow.</li></ul>
+    </div>
+    <div class="case">
+      <div class="side"><h4>FIDT Portal</h4></div>
+      <ul><li>Frontend of the FIDT portal in Vue and TypeScript.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="github">
+  <h2>Recent work on GitHub</h2>
+  <div class="grid oss">
+    <article class="card big">
+      <span class="kicker">AI · multi-agent</span>
+      <h3>Studio</h3>
+      <p>A development framework, shipped as a Claude Code skill, where Claude plans and reviews as architect while PM, UX, dev, QA and QC agents work in parallel on lower-cost models, from an approved spec to reviewed, browser-tested slices. Every project runs in its own Docker box with filesystem and network allow-lists, and results are checked by diffs and tests, never by an agent's own report. Agent runtimes were picked by a scripted benchmark (4 agents × 2 models × 3 tasks).</p>
+      <div class="tags"><span class="tag">Claude Code skill</span><span class="tag">tmux</span><span class="tag">Docker</span><span class="tag">Vue dashboard</span></div>
+      <div class="foot"><a href="https://github.com/samsa0201/claude-master-framework">github.com/samsa0201/claude-master-framework</a></div>
+    </article>
+    <article class="card big">
+      <span class="kicker">Mobile · product design</span>
+      <h3>One Pane</h3>
+      <p>An Android app for driving tmux over SSH on a phone: one pane at a time, full screen, always showing where that pane sits in its window and session. It speaks tmux control mode, so it reads the real layout instead of scraping a desktop-sized terminal. Designed end to end, from a design canvas ("Ink &amp; Phosphor") to a liquid-glass UI with a home-screen widget and keystore-backed secrets.</p>
+      <div class="tags"><span class="tag">Flutter</span><span class="tag">SSH</span><span class="tag">UI design</span><span class="tag">Android widget</span></div>
+      <div class="foot"><span class="muted">Preparing for Google Play</span></div>
+    </article>
+    <article class="card">
+      <span class="kicker">Native · macOS + Android</span>
+      <h3>One Cursor</h3>
+      <p>One keyboard and mouse across a Mac, an Android phone and other computers. Speaks the Barrier 1.6 protocol, so it works with existing Barrier and Input Leap setups, including Vietnamese Telex typing and a shared clipboard.</p>
+      <div class="tags"><span class="tag">Swift</span><span class="tag">Kotlin</span></div>
+      <div class="foot"><a href="https://github.com/samsa0201/one-cursor">one-cursor</a></div>
+    </article>
+    <article class="card">
+      <span class="kicker">Android · UI</span>
+      <h3>Aura Widget</h3>
+      <p>A home-screen music widget that controls any player, with five themes (Liquid Glass, Nothing, Material You, AMOLED, album blur) and an output-device picker.</p>
+      <div class="tags"><span class="tag">Kotlin</span><span class="tag">Theming</span></div>
+      <div class="foot"><a href="https://github.com/samsa0201/one-player-widget">one-player-widget</a></div>
+    </article>
+    <article class="card">
+      <span class="kicker">Developer tooling</span>
+      <h3>ccp</h3>
+      <p>Claude Code profiles: launch Claude Code with preset environment variables and flags. Distributed through a Homebrew tap and <code>go install</code>.</p>
+      <div class="tags"><span class="tag">Go</span><span class="tag">Homebrew</span></div>
+      <div class="foot"><a href="https://github.com/samsa0201/ccp">ccp</a></div>
+    </article>
+    <article class="card">
+      <span class="kicker">Hardware · reverse engineering</span>
+      <h3>Silentium web driver</h3>
+      <p>A browser driver for a wireless mouse: firmware update over Web Bluetooth, replacing a Windows-only tool, plus a WebHID probe for descriptors and reports.</p>
+      <div class="tags"><span class="tag">Web Bluetooth</span><span class="tag">WebHID</span></div>
+      <div class="foot"><a href="https://github.com/samsa0201/hyperwork-silentium-gen-2-web-driver">web driver</a></div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>How I work</h2>
+  <div class="steps">
+    <div class="card"><h3>Write it down first</h3><p>A spec or design record with the options I rejected and why, agreed before code.</p></div>
+    <div class="card"><h3>Measure, don't guess</h3><p>Traces, explicit goals and benchmarks, so every change to a system or an agent has evidence behind it.</p></div>
+    <div class="card"><h3>Ship small, keep a way back</h3><p>Phased rollouts behind flags, parity tests against the old path, and a kill switch.</p></div>
+    <div class="card"><h3>Teach what works</h3><p>Turn proven patterns into team standards through docs, workshops and code review.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Tech stack</h2>
+  <div class="stack">
+    <b>Frontend</b><span>Vue 3, Nuxt, TypeScript, React, Vite, SSR &amp; hydration, Module Federation, SCSS</span>
+    <b>Mobile</b><span>Flutter, Kotlin, Swift</span>
+    <b>Backend</b><span>Node.js, Bun, Hono, Zod, MongoDB, PostgreSQL, Redis, Directus, OIDC/OAuth2</span>
+    <b>DevOps</b><span>Docker, Kubernetes deployments (Helm, Argo CD), GitLab CI</span>
+    <b>AI</b><span>Agent architecture, tool use, multi-agent orchestration, evaluation &amp; quality gates, MCP</span>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p class="intro" style="margin-top:0">Hiring for a platform, AI or frontend role, or need a product UI designed and built? Email me a short brief.</p>
+  <div class="cta">
+    <a class="btn primary" href="mailto:tienphamnhat.personal@gmail.com">tienphamnhat.personal@gmail.com</a>
+    <a class="btn" href="Pham-Nhat-Tien-CV.pdf">CV (PDF)</a>
+  </div>
+  <div class="contacts"><span>+84 707 710 344</span><a href="https://github.com/samsa0201">GitHub</a><a href="https://www.linkedin.com/in/iwkuthedev/">LinkedIn</a><a href="https://gitlab.com/iwkuthedev">GitLab</a></div>
+</section>
+
+<footer><span>© 2026 Pham Nhat Tien</span><span>Bachelor of Engineering, Software Engineering · HCMUTE</span></footer>
+</div>
+</body>
+</html>
